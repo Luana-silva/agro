@@ -1,0 +1,51 @@
+<form [formGroup]="form" (ngSubmit)="save()" novalidate>
+
+<!-- User start -->
+<section class="basic-elements">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="content-header">{{newEdit}}</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title mb-0">User Information</h4>
+        </div>
+        <div class="card-body">
+          <div class="px-3">
+
+              <div class="form-body">
+                <div class="row">
+                  <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                    <fieldset class="form-group">
+                      <small class="form-text text-muted danger" *ngIf="!form.get('name').valid && (form.get('name').dirty || form.get('name').touched)">Campo Obrigatório</small>
+                      <label for="txtName">Name</label>
+                      <input type="text" class="form-control" id="txtName" [(ngModel)]="user.name" formControlName="name">
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- User end -->
+
+<!-- Submit begin -->
+<section class="file-browser">
+  <div class="form-actions">
+    <div class="text-right">
+      <button type="submit" class="btn btn-raised btn-primary">Save <i class="ft-thumbs-up position-right"></i></button>
+    </div>
+  </div>
+</section>
+<!-- Submit end -->
+
+
+
+</form>

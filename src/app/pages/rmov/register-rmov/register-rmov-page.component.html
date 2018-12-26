@@ -1,0 +1,44 @@
+<!--Basic DataTable Starts-->
+
+<!-- Submit begin -->
+<section class="file-browser">
+  <div class="form-actions">
+    <div class="text-right">
+      <button type="button" (click)="save()" class="btn btn-raised btn-primary">Save <i class="ft-thumbs-up position-right"></i></button>
+    </div>
+  </div>
+</section>
+<!-- Submit end -->
+
+<section id="basic-datatable" class="mb-3">
+
+  <div class="row">
+    <div class="col-sm-12">
+      <ngx-datatable class="bootstrap" [rows]="rows" [columns]="columns" [columnMode]="'force'"
+                     [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [reorderable]="reorderable">
+        <i class="ft-edit-2 info font-medium-1 mr-2"></i>
+
+        <ngx-datatable-column name="Model Number" prop="mdnb">
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Serial Number" prop="srnb">
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Quantity" prop="qty">
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Status" prop="status">
+          <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value">
+            <select (change)="updateValue($event, 'status', rowIndex)" [value]="value">
+              <option value="PENDING_ANALYSIS">Pending Analysis</option>
+              <option value="APPROVED">Approved</option>
+              <option value="DISAPPROVED">Disapproved</option>
+            </select>
+          </ng-template>
+        </ngx-datatable-column>
+
+      </ngx-datatable>
+    </div>
+  </div>
+</section>
+<!--Basic DataTable Ends-->

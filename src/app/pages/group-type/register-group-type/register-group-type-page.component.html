@@ -1,0 +1,46 @@
+<form [formGroup]="form" (ngSubmit)="save()" novalidate>
+
+  <!-- groupType start -->
+    <section class="basic-textarea">
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title mb-0">GROUP TYPE INFORMATION</h4>
+            </div>
+            <div class="card-body">
+              <div class="card-block">
+
+                <div class="form-body">
+                  <div class="row">
+
+                    <div class="col-xl-4 col-lg-6 col-md-12">
+                      <fieldset class="form-group">
+                        <label for="txtDesc">Description</label>
+                        <input type="text" class="form-control" id="txtDesc" [(ngModel)]="groupType.desc" formControlName="desc">
+                      </fieldset>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  <!-- groupType End end -->
+
+  <!-- Submit begin -->
+  <section class="file-browser">
+    <div class="form-actions">
+      <div class="text-right">
+        <button type="submit" class="btn btn-raised btn-primary">Save <i class="ft-thumbs-up position-right"></i></button>
+      </div>
+    </div>
+  </section>
+  <!-- Submit end -->
+
+</form>

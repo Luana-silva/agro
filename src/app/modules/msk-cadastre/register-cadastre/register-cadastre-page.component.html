@@ -1,0 +1,47 @@
+<form [formGroup]="form" (ngSubmit)="save()" novalidate>
+
+ <!--User start -->
+<section class="basic-textarea">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title mb-0">Dados Usuários</h4>
+        </div>
+        <div class="card-body">
+          <div class="card-block">
+
+            <div class="form-body">
+              <div class="row">
+                <div class="col-xl-4 col-lg-6 col-md-12">
+                  <fieldset class="form-group">
+                    <label for="txtName">Name</label>
+                    <input type="text" class="form-control" id="txtName" [(ngModel)]="cadastre.name" formControlName="name">
+                  </fieldset>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-12">
+                  <fieldset class="form-group">
+                    <label for="txtEmail">Email</label>
+                    <input type="text" class="form-control" id="txtEmail" [(ngModel)]="cadastre.email" formControlName="email">
+                  </fieldset>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ <!--User End end -->
+
+<!-- Submit begin -->
+<section class="file-browser">
+  <div class="form-actions">
+    <div class="text-right">
+      <button type="submit" class="btn btn-raised btn-primary"> {{ 'form.save' | translate }} <i class="ft-thumbs-up position-right"></i></button>
+    </div>
+  </div>
+</section>
+<!-- Submit end -->
+</form>

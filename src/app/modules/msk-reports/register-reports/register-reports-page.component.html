@@ -1,0 +1,93 @@
+<form [formGroup]="form" (ngSubmit)="save()" novalidate>
+
+  <!--User start -->
+  <section class="basic-textarea">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title mb-0">Envio de Relatórios</h4>
+          </div>
+          <div class="card-body">
+            <div class="card-block">
+
+              <div class="switch-company col-xl-3 col-lg-4 col-md-6 mb-1 ">
+                <label for="txtselectCompany">Parceiro</label>
+                <small class="form-text text-muted danger" *ngIf="!form.get('idCompany').valid && (form.get('idCompany').dirty || form.get('idCompany').touched)">Campo Obrigatório</small>
+                <select class="form-control"  id="txtselectCompany" (change)="selectCompany()" formControlName="idCompany" prop="company" [(ngModel)]="reports.idCompany">
+                  <option *ngFor="let company of rowOptions" [ngValue]="company.id"> {{company.fantasyName}}</option>
+                </select>
+              </div>
+
+              <div *ngIf="this.checkUpload">
+                <div class="col-md-12 col-lg-7">
+                  <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)"  [uploader]="uploader"
+                       class="py-5 mb-3 text-center font-medium-5 text-uppercase grey my-drop-zone">
+                    Arraste o arquivo aqui
+                  </div>
+                </div>
+
+                <div class="col-sm-12 col-md-7">
+                  <h4>Arquivo</h4>
+
+                  <table class="table">
+                    <thead>
+                    <tr>
+                      <th width="50%">Nome</th>
+                      <th>Status</th>
+                      <th>Ações</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let item of uploader.queue">
+                      <td><strong id="nameItem">{{ item?.file?.name }}</strong></td>
+                      <td *ngIf="uploader.isHTML5">
+                        <div class="progress" style="margin-bottom: 0;">
+                          <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': progress + '%' }"></div>
+                        </div>
+                      </td>
+                      <td class="text-center">
+                    <span *ngIf="uploader.progress >= 100">
+                      Enviado
+                    </span>
+                      </td>
+                      <td>
+                        <button type="button" class="btn btn-raised btn-success btn-sm" (click)="item.upload($event)" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                          <span class="fa fa-upload"></span> Upload
+                        </button>
+                        <button type="button" class="btn btn-raised btn-warning btn-sm" (click)="item.cancel()" [disabled]="!item.isUploading">
+                          <span class="fa fa-ban"></span> Cancel
+                        </button>
+                        <button type="button" class="btn btn-raised btn-danger btn-sm" (click)="item.remove()">
+                          <span class="fa fa-trash"></span> Remove
+                        </button>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+
+                  <div>
+                    <p>Queue progress:
+                      <ngb-progressbar type="primary" [value]="uploader.progress"></ngb-progressbar>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--User End end -->
+
+  <!-- Submit begin -->
+  <!--<section class="file-browser">-->
+  <!--<div class="form-actions">-->
+  <!--<div class="text-right">-->
+  <!-- <button type="submit" class="btn btn-raised btn-primary">Save <i class="ft-thumbs-up position-right"></i></button> -->
+  <!--</div>-->
+  <!--</div>-->
+  <!--</section>-->
+  <!-- Submit end -->
+</form>

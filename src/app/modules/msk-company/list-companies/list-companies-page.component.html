@@ -1,0 +1,68 @@
+<!--Basic DataTable Starts-->
+<section id="basic-datatable" class="mb-3">
+
+    <div class="text-right">
+      <button type="button" (click)="newCompany()" class="btn btn-raised btn-primary">Novo
+        Parceiro<i class="ft-plus position-right"></i></button>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+
+        <div class="card">
+          <div class="card-body">
+            <div class="card-block">
+
+              <input type='text' style='padding:8px;margin:15px auto;width:25%;' placeholder='Filtrar...' (keyup)='updateFilter($event)'/>
+
+              <ngx-datatable class="bootstrap fullscreen" [rows]="rows" [columns]="columns" [columnMode]="'force'"
+                             [headerHeight]="50" [footerHeight]="70" [scrollbarH]="true" [rowHeight]="'auto'" [limit]="10">
+                <i class="ft-edit-2 info font-medium-1 mr-2"></i>
+
+                <ngx-datatable-column name="Nome" prop="fantasyName">
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="Cidade" prop="addressInfo.city">
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="Status">
+
+                  <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value">
+
+                    <p *ngIf="row.status == 'BLOCKED'">
+                      Inativo
+                    </p>
+
+                    <p *ngIf="row.status == 'ACTIVE'">
+                      Ativo
+                    </p>
+
+                  </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="Ações">
+                  <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                    {{column.name}}
+                  </ng-template>
+
+                  <ng-template let-column="column" ngx-datatable-header-template>
+                    actions
+                  </ng-template>
+
+                  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                    <i class="pb-icon icon-edit" *ngIf="row.status == 'ACTIVE'" (click)="detail(row)" class="pointer">Editar</i>
+                    <i class="pb-icon icon-edit" *ngIf="row.status == 'ACTIVE'" (click)="changeStatus(row)" class="pointer"> | Desativar</i>
+                    <i class="pb-icon icon-garbage pointer" *ngIf="row.status == 'BLOCKED'" (click)="changeStatus(row)" >Cancelar</i>
+                  </ng-template>
+
+                </ngx-datatable-column>
+              </ngx-datatable>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!--Basic DataTable Ends-->

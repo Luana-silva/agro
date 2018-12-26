@@ -1,0 +1,64 @@
+@import "../../../../assets/sass/scss/gradient-variables";
+@import "../../../../../node_modules/chartist/dist/chartist.css";
+
+
+// Line with Area Chart 2 CSS Starts
+//
+//:host /deep/ .lineArea2 .ct-series-a .ct-area {
+//  fill: url($dashboard1-gradient-path +  #gradient) !important;
+//}
+//
+//:host /deep/ .lineArea2 .ct-series-b .ct-area {
+//  fill: url($dashboard1-gradient-path +  #gradient1) !important;
+//}
+
+:host /deep/ .lineArea2 .ct-point-circle {
+  stroke-width: 2px;
+  fill: white;
+}
+//
+//.lineArea .ct-series-a .ct-area {
+//  fill-opacity: 0.7;
+//  fill:url(#gradient) !important;
+//}
+//
+//.lineArea .ct-series-b .ct-area {
+//  fill: url(#gradient) !important;
+//  fill-opacity: 0.9;
+//}
+//.lineArea .ct-line{
+//  stroke-width: 0px;
+//}
+//.lineArea .ct-point {
+//  stroke-width: 0px;
+//}
+
+:host /deep/ .lineArea2 .ct-series-b .ct-point-circle{
+  stroke: #843cf7;
+}
+
+:host /deep/ .lineArea2 .ct-series-b .ct-line{
+  stroke: #A675F4;
+}
+
+:host /deep/ .lineArea2 .ct-series-a .ct-point-circle {
+  stroke: #31afb2;
+}
+
+:host /deep/ .lineArea2 .ct-series-a .ct-line{
+  stroke: #3bafb9;
+}
+
+:host /deep/ .lineArea2 .ct-line {
+  fill: none;
+  stroke-width: 2px;
+}
+
+.lineChart1Shadow {
+  -webkit-filter: drop-shadow( 0px 20px 6px rgba(0,0,0,0.3) );
+  filter: drop-shadow( 0px 20px 6px rgba(0,0,0,0.3) );
+}
+
+
+// Line with Area Chart 2 CSS Ends
+

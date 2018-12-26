@@ -1,0 +1,108 @@
+<form>
+
+  <!-- Post start -->
+  <section class="basic-elements">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="text-right">
+          <button type="button" (click)="save()" class="btn btn-raised btn-primary">Salvar <i class="ft-thumbs-up position-right"></i></button>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title mb-0">Notícia</h4>
+          </div>
+
+
+          <div class="card-body">
+            <div class="px-3">
+
+
+
+              <div class="form-body">
+                <div class="row">
+                  <div class="col-xl-12 col-lg-12 col-md-12 mb-1">
+                    <p class="h3">{{post.infoUrl.title}}</p>
+                  </div>
+                </div>
+                  <div class="row">
+                    <div class="col-xl-3 col-lg-4 col-md-6 mb-1">
+                      <label>Notícia Aprovado?</label>
+                      <br>
+                      <div class="row">
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-1">
+                          <label class="switch">
+                            <input type="checkbox" class="form-control" (click)="changeStatus()" [(ngModel)]="approve" formControlName="switchApprove">
+                            <span class="slider round"></span>
+                          </label>
+                        </div>
+                          <div class="col-xl-9 col-lg-8 col-md-6 mb-1">
+                            <p>{{message}}</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-3 col-lg-4 col-md-6 mb-1">
+                        <label>Quer receber notificação?</label>
+                        <br>
+                        <div class="row">
+                          <div class="col-xl-3 col-lg-4 col-md-6 mb-1">
+                            <label class="switch">
+                              <input type="checkbox" class="form-control" [(ngModel)]="post.fgNotification" formControlName="fgNotification">
+                              <span class="slider round"></span>
+                            </label>
+                          </div>
+                          </div>
+                        </div>
+                    <div class="col-xl-2 col-lg-4 col-md-6 mb-1">
+                      <div class="pt-3">
+                        <button type="button" (click)="viewSource()" class="btn btn-raised btn-primary">Acessar Notícia</button>
+                      </div>
+                    </div>
+                  </div>
+                <div class="row">
+                  <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                    <label>Visualização do Post:</label>
+                  </div>
+
+                  <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                      <label>Tags:</label>
+                    </div>
+                </div>
+          
+                  <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-3">
+                      <div class="card rounded border p-1">
+                        <a (click)="viewSource()"><img class="width-400 card-img-top img-thumbnail" src={{post.infoUrl.urlPhoto}} alt="Card image"></a>
+                        <div class="card-body">
+                          <h6 class="card-subtitle">{{post.infoUrl.title}}<br><small class="mb-2 text-muted">{{post.infoUrl.siteName}}</small></h6>
+                          <p class="card-text">{{post.infoUrl.desc}}</p>
+                        </div>
+                      </div>
+                    </div>
+
+                  <div class="col-xl-6">
+                    <div class="card rounded">
+                      <div class="" *ngFor="let tag of listTags">
+                        <span class="badge badge-success" style="margin-bottom: 8px;">{{ tag }}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  </div>
+
+                  <fieldset class="form-group">
+                    <label for="txtName">Cidade</label>
+                  <input type="text" class="form-control" id="txtName" name="address" [(ngModel)]="post.address.city" style="width: 40%;">
+                  </fieldset>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  </section>
+  <!-- Post end -->
+</form>
+

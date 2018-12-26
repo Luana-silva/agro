@@ -1,0 +1,484 @@
+<form [formGroup]="form" (ngSubmit)="save()" novalidate>
+
+  <!-- Company start -->
+  <section class="basic-elements">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title mb-0">Informações do Usuário</h4>
+          </div>
+          <div class="card-body">
+            <div class="px-3">
+
+              <div class="form-body">
+                <div class="row">
+                  <div class="col-xl-3 col-lg-4 col-md-12 mb-1">
+                    <fieldset class="form-group">
+                      <label for="txtuserName">Nome de Usuário</label>
+                      <!--{{companyCard | json}}-->
+                      <input type="text" class="form-control" id="txtuserName" [(ngModel)]="company.info.userName"
+                             formControlName="userName">
+                      <small class="form-text text-muted danger"
+                             *ngIf="!form.get('userName').valid && (form.get('userName').dirty || form.get('userName').touched)">
+                        Campo Obrigatório
+                      </small>
+                    </fieldset>
+                  </div>
+
+                  <div class="col-xl-3 col-lg-4 col-md-12 mb-1">
+                    <fieldset class="form-group">
+                      <label for="txtuserEmail">Email</label>
+                      <input type="email" required email class="form-control" id="txtuserEmail" [(ngModel)]="company.info.userEmail"
+                             formControlName="userEmail">
+                      <small class="form-text text-muted danger"
+                             *ngIf="!form.get('userEmail').valid && (form.get('userEmail').dirty || form.get('userEmail').touched)">
+                        Email Inválido
+                      </small>
+                    </fieldset>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Company end -->
+
+    <!-- Company start -->
+    <section class="basic-elements">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title mb-0">Informações do Parceiro</h4>
+            </div>
+            <div class="card-body">
+              <div class="px-3">
+
+                <div class="form-body">
+                  <div class="row">
+                    <div class="col-xl-3 col-lg-5 col-md-12 mb-1">
+                      <fieldset class="form-group">
+                        <label for="txtName">Nome</label>
+                        <input type="text" class="form-control" id="txtName" name="name" [(ngModel)]="company.fantasyName"
+                               formControlName="name">
+                        <small class="form-text text-muted danger"
+                               *ngIf="!form.get('name').valid && (form.get('name').dirty || form.get('name').touched)">
+                          Campo Obrigatório
+                        </small>
+                      </fieldset>
+                    </div>
+
+                    <div class="col-xl-3 col-lg-4 col-md-12 mb-1">
+                      <fieldset class="form-group">
+                        <label for="txtdocument">CNPJ</label>
+                        <input type="text" mask="000.000.000/0000-00" class="form-control" id="txtdocument"
+                               [(ngModel)]="company.document" formControlName="document">
+                        <small class="form-text text-muted danger"
+                               *ngIf="!form.get('document').valid && (form.get('document').dirty || form.get('document').touched)">
+                          Campo Obrigatório
+                        </small>
+                      </fieldset>
+                    </div>
+
+
+                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                      <fieldset class="form-group">
+                        <label for="txtUrl">Site</label>
+                        <input type="text" class="form-control" id="txtUrl" [(ngModel)]="company.info.url"
+                               formControlName="url">
+                        <small class="form-text text-muted danger"
+                               *ngIf="!form.get('url').valid && (form.get('url').dirty || form.get('url').touched)">
+                          Campo Obrigatório
+                        </small>
+                      </fieldset>
+                    </div>
+
+                    <div class="col-xl-2 col-lg-4 col-md-12 mb-1">
+                      <fieldset class="form-group">
+                        <label>Nota</label>
+                        <br/>
+                        <!--Basic Rating Starts-->
+                        <ngb-rating [(rate)]="company.info.stars"></ngb-rating>
+                        <p>Estrelas: <b>{{company.info.stars}}</b></p>
+                        <!--Basic Rating Ends-->
+                      </fieldset>
+                    </div>
+
+                    <div class="col-xl-5 col-lg-8 col-md-12 mb-1">
+                      <fieldset class="form-group">
+                        <label for="txtDesc">Descrição</label>
+                        <textarea type="text" rows="3" class="form-control" id="txtDesc" [(ngModel)]="company.desc"
+                                  formControlName="desc"></textarea>
+                        <small class="form-text text-muted danger"
+                               *ngIf="!form.get('desc').valid && (form.get('desc').dirty || form.get('desc').touched)">
+                          Campo Obrigatório
+                        </small>
+                      </fieldset>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Company end -->
+
+    <!-- AddressInfo start -->
+    <section class="basic-elements">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title mb-0">Endereço</h4>
+            </div>
+            <div class="card-body">
+              <div class="px-3">
+
+                <div class="form-body">
+                  <div class="row">
+                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                      <fieldset class="form-group">
+                        <label for="txtzipCode">CEP</label>
+                        <div>
+                          <div class="zipcode row">
+                            <input type="text" class="form-control col-xl-5 col-lg-6 col-md-12" mask="00000-000"
+                                   id="txtzipCode" [(ngModel)]="company.addressInfo.zipCode"
+                                   formControlName="zipCode">
+                            <button type="button" class="btn-link " (click)="returnAddress()">Buscar</button>
+                            <small class="form-text text-muted danger"
+                                   *ngIf="!form.get('zipCode').valid && (form.get('zipCode').dirty || form.get('zipCode').touched)">
+                              Campo Obrigatório
+                            </small>
+                            <small class="form-text text-muted danger" *ngIf="checkCep == true">CEP não encontrado</small>
+
+                          </div>
+
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                      <fieldset class="form-group">
+                        <label for="txtStreet">Rua</label>
+                        <input type="text" class="form-control" id="txtStreet" [(ngModel)]="company.addressInfo.street"
+                               formControlName="street">
+                        <small class="form-text text-muted danger"
+                               *ngIf="!form.get('street').valid && (form.get('street').dirty || form.get('street').touched)">
+                          Campo Obrigatório
+                        </small>
+                      </fieldset>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                      <fieldset class="form-group">
+                        <label for="txtNumber">Número</label>
+                        <input type="text" class="form-control" mask="AAAAAAAAAAAA" id="txtNumber"
+                               [(ngModel)]="company.addressInfo.number" formControlName="number">
+                        <small class="form-text text-muted danger"
+                               *ngIf="!form.get('number').valid && (form.get('number').dirty || form.get('number').touched)">
+                          Campo Obrigatório
+                        </small>
+                      </fieldset>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                      <fieldset class="form-group">
+                        <label for="txtDistrict">Bairro</label>
+                        <input type="text" class="form-control" id="txtDistrict"
+                               [(ngModel)]="company.addressInfo.district" formControlName="district">
+                        <small class="form-text text-muted danger"
+                               *ngIf="!form.get('district').valid && (form.get('district').dirty || form.get('district').touched)">
+                          Campo Obrigatório
+                        </small>
+                      </fieldset>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                      <fieldset class="form-group">
+                        <label for="txtCity">Cidade</label>
+                        <input type="text" class="form-control" id="txtCity" [(ngModel)]="company.addressInfo.city"
+                               formControlName="city">
+                        <small class="form-text text-muted danger"
+                               *ngIf="!form.get('city').valid && (form.get('city').dirty || form.get('city').touched)">
+                          Campo Obrigatório
+                        </small>
+                      </fieldset>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                      <fieldset class="form-group">
+                        <label>Estado</label>
+                        <select class="form-control" formControlName="state" [(ngModel)]="company.addressInfo.state">
+                          <option value="AC">Acre</option>
+                          <option value="AL">Alagoas</option>
+                          <option value="AP">Amapá</option>
+                          <option value="AM">Amazonas</option>
+                          <option value="BA">Bahia</option>
+                          <option value="CE">Ceará</option>
+                          <option value="DF">Distrito Federal</option>
+                          <option value="ES">Espírito Santo</option>
+                          <option value="GO">Goiás</option>
+                          <option value="MA">Maranhão</option>
+                          <option value="MS">Mato Grosso do Sul</option>
+                          <option value="MG">Minas Gerais</option>
+                          <option value="PA">Pará</option>
+                          <option value="PB">Paraíba</option>
+                          <option value="PR">Paraná</option>
+                          <option value="PE">Pernambuco</option>
+                          <option value="PI">Piauí</option>
+                          <option value="RJ">Rio de Janeiro</option>
+                          <option value="RN">Rio Grande do Norte</option>
+                          <option value="RS">Rio Grande do Sul</option>
+                          <option value="RO">Rondônia</option>
+                          <option value="RR">Roraima</option>
+                          <option value="SC">Santa Catarina</option>
+                          <option value="SP">São Paulo</option>
+                          <option value="SE">Sergipe</option>
+                          <option value="TO">Tocantins</option>
+
+                        </select>
+                      </fieldset>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                      <fieldset class="form-group">
+                        <label for="txtComplement">Complemento</label>
+                        <input type="text" class="form-control" id="txtComplement"
+                               [(ngModel)]="company.addressInfo.complement" formControlName="complement">
+                      </fieldset>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- AddressInfo end -->
+
+    <!-- SalesOff start -->
+    <section class="basic-elements">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title mb-0">Promoções</h4>
+            </div>
+            <div class="card-body">
+              <div class="px-3">
+                <div class="form-body">
+                  <div class="row">
+
+                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                      <fieldset class="form-group">
+                        <label for="txtQuarto1">Quarto1</label>
+                        <input type="text" class="form-control" id="txtQuarto1" [(ngModel)]="company.salesOff[0].title"
+                               formControlName="title1">
+                        <small class="form-text text-muted danger"
+                               *ngIf="!form.get('title1').valid && (form.get('title1').dirty || form.get('title1').touched)">
+                          Campo Obrigatório
+                        </small>
+                      </fieldset>
+                    </div>
+                    <div class="col-xl-2 col-lg-4 col-md-4 mb-1">
+                      <fieldset class="form-group">
+                        <label for="txtPrice1">Preço1</label>
+                        <input type="text" class="form-control" id="txtPrice1" [(ngModel)]="company.salesOff[0].priceNow"
+                               formControlName="priceNow1" currencyMask
+                               [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+                        <small class="form-text text-muted danger"
+                               *ngIf="!form.get('priceNow1').valid && (form.get('priceNow1').dirty || form.get('priceNow1').touched)">
+                          Campo Obrigatório
+                        </small>
+                      </fieldset>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                      <fieldset class="form-group">
+                        <label for="txtQuarto2">Quarto2</label>
+                        <input type="text" class="form-control" id="txtQuarto2" [(ngModel)]="company.salesOff[1].title"
+                               formControlName="title2">
+                        <small class="form-text text-muted danger"
+                               *ngIf="!form.get('title2').valid && (form.get('title2').dirty || form.get('title2').touched)">
+                          Campo Obrigatório
+                        </small>
+                      </fieldset>
+                    </div>
+                    <div class="col-xl-2 col-lg-4 col-md-4 mb-1">
+                      <fieldset class="form-group">
+                        <label for="txtPrice2">Preço2</label>
+                        <input type="text" class="form-control" id="txtPrice2" [(ngModel)]="company.salesOff[1].priceNow"
+                               formControlName="priceNow2" currencyMask
+                               [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+                        <small class="form-text text-muted danger"
+                               *ngIf="!form.get('priceNow2').valid && (form.get('priceNow2').dirty || form.get('priceNow2').touched)">
+                          Campo Obrigatório
+                        </small>
+                      </fieldset>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- SalesOff end -->
+
+    <!-- Gallery start -->
+    <section class="basic-elements" *ngIf="company.id != null">
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12">
+          <div class="card">
+
+            <div class="card-header">
+              <h4 class="card-title mb-0">Selecionar arquivos</h4>
+            </div>
+
+            <div class="card-body">
+              <div class="card-block">
+                <div class="input-group">
+
+                  <label class="display-inline-block custom-control custom-radio ml-1">
+                    <input type="radio" name="imageCompany" value="logo" formControlName="typeImage"
+                           [(ngModel)]="typeImage" (change)="changeTypeImage()" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description ml-0">Logo</span>
+                  </label>
+
+                  <label class="display-inline-block custom-control custom-radio ml-1">
+                    <input type="radio" name="imageCompany" value="gallery" formControlName="typeImage" [(ngModel)]="typeImage" (change)="changeTypeImage()" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description ml-0">Galeria</span>
+                  </label>
+
+                </div>
+
+                <div *ngIf="typeImage === 'logo'" id="card-logo">
+                  <div class="row">
+
+                    <div class="col-xl-12 col-lg-12 col-md-12">
+                      <fieldset class="form-group file-upload">
+                        <label for="custom-input">Enviar logo</label>
+                        <label for="custom-input" class="custom-file center-block d-block">
+                          <input type="file" id="custom-input" class="custom-file-input" (change)="fileChangeListener($event)"/>
+                          <span class="custom-file-control"></span>
+                        </label>
+                      </fieldset>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                      <img-cropper #cropper [image]="data" [settings]="cropperSettings" class=""></img-cropper>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                      <div class="result" *ngIf="data.image">
+                        <img [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
+                      </div>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                      <br>
+                      <button type="button" (click)="addPhoto()" *ngIf="data.image" class="btn btn-raised btn-success">
+                        Enviar
+                      </button>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div *ngIf="typeImage === 'gallery'">
+                  <h4>Galeria de imagens</h4>
+                  <app-upload [id_object]="company.id" (uploadedImages)="changeUploadedImages($event)"></app-upload>
+                </div>
+
+              </div>
+            </div>
+            <!--card-body-->
+          </div>
+          <!--card-->
+
+        </div>
+      </div>
+    </section>
+    <!-- Gallery end -->
+
+    <!--Carousel Starts-->
+    <section *ngIf="company.id != null" id="carousel">
+      <!--Basic Carousel Starts-->
+      <div class="row" matchHeight="card">
+
+        <div class="col-lg-6 col-xl-6">
+          <div class="card">
+
+            <div class="card-header">
+              <h4 class="card-title">Logo</h4>
+            </div>
+
+            <div class="card-body">
+              <div class="card-block">
+                <img class="img-fluid max-width: 100%; height: auto;" [src]="logoUrl">
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+
+            <div class="card-header">
+              <h4 class="card-title">Galeria</h4>
+            </div>
+
+            <div class="card-body">
+              <div class="card-block">
+
+                <ngb-carousel>
+
+                  <ng-template ngbSlide *ngFor="let slide of company.gallery">
+
+                    <img [src]="getUrl(slide.id)" alt="Imagens"/>
+
+                    <div class="carousel-caption">
+                      <button type="button" (click)="removePhoto(slide)" class="btn btn-raised btn-danger">
+                        Remover
+                      </button>
+                    </div>
+
+                  </ng-template>
+
+                </ngb-carousel>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+    <!--Carousel Ends-->
+
+    <!-- Submit begin -->
+    <section class="file-browser">
+      <div class="form-actions">
+        <div class="text-right">
+          <button type="submit" class="btn btn-raised btn-primary">
+            {{ 'form.save' | translate }}
+            <i class="ft-thumbs-up position-right"></i></button>
+        </div>
+      </div>
+    </section>
+    <!-- Submit end -->
+
+  </form>

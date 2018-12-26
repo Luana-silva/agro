@@ -1,0 +1,39 @@
+<!--Basic DataTable Starts-->
+<section id="basic-datatable" class="mb-3">
+
+  <div class="text-right">
+    <button type="button" (click)="newGroupType()" class="btn btn-raised btn-primary">New Group Type <i class="ft-plus position-right"></i></button>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <ngx-datatable class="bootstrap" [rows]="rows" [columns]="columns" [columnMode]="'force'"
+                     [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [reorderable]="reorderable">
+        <i class="ft-edit-2 info font-medium-1 mr-2"></i>
+
+        <ngx-datatable-column name="Name" prop="desc">
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Status" >
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Actions" >
+          <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+            {{column.name}}
+          </ng-template>
+
+          <ng-template let-column="column" ngx-datatable-header-template>
+            actions
+          </ng-template>
+
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <i *ngIf="row.status == 'ACTIVE'" class="pb-icon icon-edit pointer" (click)="detail(row)">Edit</i>
+            <i *ngIf="row.status == 'ACTIVE'"> | </i>
+            <i class="pb-icon icon-garbage pointer" (click)="delete(row)" >Cancel</i>
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </div>
+  </div>
+</section>
+<!--Basic DataTable Ends-->

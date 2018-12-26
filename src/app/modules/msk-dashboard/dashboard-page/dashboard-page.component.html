@@ -1,0 +1,23 @@
+<div class="row" matchHeight ="card">
+  <div class="col-xl-12 col-lg-12 col-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title mb-0">Cliques em Banner X Retorno do Parceiros</h4>
+      </div>
+      <div class="card-body">
+        <div class="card-block">
+          <div class="chart-info mb-2">
+            <span class="text-uppercase mr-3"><i class="fa fa-circle primary font-small-2 mr-1"></i> Cliques em Banner</span>
+            <span class="text-uppercase"><i class="fa fa-circle deep-purple font-small-2 mr-1"></i> Retorno do Parceiros</span>
+          </div>
+          <div id="line-area2" class="height-400 lineArea2 lineChart1Shadow">
+            <x-chartist class="line-area2" [data]="lineArea2.data" [type]="lineArea2.type" [options]="lineArea2.options"
+                        [responsiveOptions]="lineArea2.responsiveOptions" [events]="lineArea2.events">
+            </x-chartist>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,84 @@
+<form [formGroup]="form" novalidate>
+
+<!-- Contactus start -->
+<section class="basic-elements">
+  <div class="row">
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title mb-0">Informações Gerais</h4>
+        </div>
+        <div class="card-body">
+          <div class="px-3">
+
+              <div class="form-body">
+                <div class="row">
+                  <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                      <label>Tipo</label>
+                      <p>{{contactus.typeContactUs.name}}</p>
+                  </div>
+
+                  <div class="col-xl-12 col-lg-12 col-md-12 mb-1">
+                    <fieldset class="form-group">
+                      <label>Mensagem</label>
+                      <p>{{contactus.message}}</p>
+                    </fieldset>
+                  </div>
+
+                </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title mb-0">INFORMAÇÃO DO USUÁRIO</h4>
+        </div>
+        <div class="card-body">
+          <div class="px-3">
+
+            <div class="form-body">
+              <div class="row">
+
+                <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                  <label>Nome</label>
+                  <p>{{user.name}}</p>
+                </div>
+
+                <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                  <label>Email</label>
+                  <p>{{user.email}}</p>
+                </div>
+
+                <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                  <label>Telefone</label>
+                  <p>{{user.phone}}</p>
+                </div>
+
+                <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                  <label>Tipo</label>
+                  <p>{{typeUser}}</p>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<!-- Contactus end -->
+
+</form>

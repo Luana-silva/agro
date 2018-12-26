@@ -1,0 +1,67 @@
+<!--Basic DataTable Starts-->
+<section id="basic-datatable" class="mb-3">
+
+  <!--<div class="text-right">-->
+    <!--<button type="button" (click)="newPost()" class="btn btn-raised btn-primary">Enviar Relatório<i class="ft-plus position-right"></i></button>-->
+  <!--</div>-->
+
+    <div class="row">
+    <div class="col-sm-12">
+
+      <!--<input type='text' style='padding:8px;margin:15px auto;width:25%;' placeholder='Filtrar...' (keyup)='updateFilter($event)'/>-->
+
+      <ngx-datatable class="bootstrap fullscreen" [rows]="rows" [columns]="columns" [columnMode]="'force'"
+                     [headerHeight]="50" [footerHeight]="70" [scrollbarH]="scrollBarHorizontal" [rowHeight]="'auto'" [reorderable]="reorderable" [limit]="30">
+        <i class="ft-edit-2 info font-medium-1 mr-2"></i>
+
+        <h1>Lista de Eventos</h1>
+
+        <ngx-datatable-column name="Data" [width]="100" maxlength="8" prop="creationDate">
+          <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value">
+            {{row.creationDate | dateFormat }}
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column [width]="150" name="Portal" prop="infoUrl.siteName">
+        </ngx-datatable-column>
+        <ngx-datatable-column [width]="250" name="Título" prop="infoUrl.title">
+        </ngx-datatable-column>
+
+        <ngx-datatable-column [width]="150" name="Status" >
+
+          <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value">
+
+            <p *ngIf="row.status == 'BLOCKED'">
+              Reprovado
+            </p>
+
+            <p *ngIf="row.status == 'PENDING'">
+              Pendente
+            </p>
+
+            <p *ngIf="row.status == 'ACTIVE'">
+              Aprovado
+            </p>
+
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column [width]="100">
+          <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+            {{column.name}}
+          </ng-template>
+
+          <ng-template let-column="column" ngx-datatable-header-template>
+            actions
+          </ng-template>
+
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <i class="pb-icon icon-edit" (click)="view(row)" class="pointer">Vizualizar</i>
+          </ng-template>
+
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </div>
+  </div>
+</section>
+<!--Basic DataTable Ends-->

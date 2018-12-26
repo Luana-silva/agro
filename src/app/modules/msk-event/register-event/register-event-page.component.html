@@ -1,0 +1,375 @@
+<form [formGroup]="form" (ngSubmit)="save()" novalidate>
+
+  <!--user event begin-->
+  <section class="basic-elements">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title mb-0">Informações do Usuário</h4>
+          </div>
+          <div class="card-body">
+            <div class="px-3">
+
+              <div class="form-body">
+                <div class="row">
+                  <div class="col-xl-3 col-lg-4 col-md-12 mb-1">
+                    <fieldset class="form-group">
+                      <label for="txtName">Nome do Usuario</label>
+                      <input type="text" class="form-control" id="txtName" [(ngModel)]="event.userName"
+                             formControlName="userName">
+                      <small class="form-text text-muted danger"
+                             *ngIf="!form.get('userName').valid && (form.get('userName').dirty || form.get('userName').touched)">
+                        Campo Obrigatório
+                      </small>
+                    </fieldset>
+                  </div>
+
+                  <div class="col-xl-3 col-lg-4 col-md-12 mb-1">
+                    <fieldset class="form-group">
+                      <label for="txtName">Email</label>
+                      <input type="text" class="form-control" id="txtName" [(ngModel)]="event.userEmail"
+                             formControlName="userEmail">
+                      <small class="form-text text-muted danger"
+                             *ngIf="!form.get('userEmail').valid && (form.get('userEmail').dirty || form.get('userEmail').touched)">
+                        Email Inválido
+                      </small>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!--user event end-->
+
+    <!-- Event start -->
+    <section class="basic-elements">
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title mb-0">Informações da Evento</h4>
+            </div>
+            <div class="card-body">
+              <div class="px-3">
+
+                <div class="form-body">
+                  <div class="row">
+                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                      <fieldset class="form-group">
+                        <label for="txtName">Nome do Evento</label>
+                        <input type="text" class="form-control" id="txtName" [(ngModel)]="event.name" formControlName="name">
+                        <small class="form-text text-muted danger" *ngIf="!form.get('name').valid && (form.get('name').dirty || form.get('name').touched)">
+                          Campo Obrigatório
+                        </small>
+                      </fieldset>
+                    </div>
+
+                    <div class="col-xl-2 col-lg-4 col-md-12 mb-1">
+                      <fieldset class="form-group">
+                        <label for="txtbegin">Data de Início</label>
+                        <input type="text" class="form-control" id="txtbegin" placeholder="DD/MM/AAAA" bsDatepicker [bsConfig]="bsConfig" [(ngModel)]="event.begin" formControlName="begin">
+                        <small class="form-text text-muted danger" *ngIf="!form.get('begin').valid && (form.get('begin').dirty || form.get('begin').touched)">
+                          Campo Obrigatório
+                        </small>
+                      </fieldset>
+                    </div>
+
+                    <div class="col-xl-2 col-lg-4 col-md-12 mb-1">
+                      <fieldset class="form-group">
+                        <label for="txtend">Data de Término</label>
+                        <input type="text" class="form-control" id="txtend" placeholder="DD/MM/AAAA" bsDatepicker [bsConfig]="bsConfig" [(ngModel)]="event.end" formControlName="end">
+                        <small class="form-text text-muted danger" *ngIf="!form.get('end').valid && (form.get('end').dirty || form.get('end').touched)">
+                          Campo Obrigatório
+                        </small>
+                        <small class="form-text text-muted danger" *ngIf="!form.get('end').valid && (form.get('end').dirty || form.get('end').touched) || event.end < event.begin">
+                          A data de fim não pode vir antes da de início
+                        </small>
+                      </fieldset>
+                    </div>
+
+                    <div class="col-xl-2 col-lg-3 col-md-6 mb-1">
+                      <fieldset class="form-group">
+                        <label for="txtprimaryColor">Cor Primaria</label><br>
+                        <input type=color class="select-color" id="txtprimaryColor" [(ngModel)]="event.primaryColor" formControlName="primaryColor">
+                        <small class="form-text text-muted danger" *ngIf="!form.get('primaryColor').valid && (form.get('primaryColor').dirty || form.get('primaryColor').touched)">
+                          Campo Obrigatório
+                        </small>
+                      </fieldset>
+                    </div>
+
+                    <div class="col-xl-2 col-lg-3 col-md-6 mb-1">
+                      <fieldset class="form-group">
+                        <label for="txtsecundaryColor">Cor Segundaria</label><br>
+                        <input type=color class="select-color" id="txtsecundaryColor" [(ngModel)]="event.secundaryColor" formControlName="secundaryColor">
+                        <small class="form-text text-muted danger" *ngIf="!form.get('secundaryColor').valid && (form.get('secundaryColor').dirty || form.get('secundaryColor').touched)">
+                          Campo Obrigatório
+                        </small>
+                      </fieldset>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-12 mb-1">
+                      <fieldset class="form-group">
+                        <label for="txtmainMessage">Mensagem</label>
+                        <input type="text" class="form-control" id="txtmainMessage" [(ngModel)]="event.mainMessage" formControlName="mainMessage">
+                        <small class="form-text text-muted danger" *ngIf="!form.get('mainMessage').valid && (form.get('mainMessage').dirty || form.get('mainMessage').touched)">
+                          Campo Obrigatório
+                        </small>
+                      </fieldset>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-12 mb-1">
+                      <fieldset class="form-group">
+                        <label for="txtsecondaryMessage">Mensagem Secundaria</label>
+                        <input type="text" class="form-control" id="txtsecondaryMessage" [(ngModel)]="event.secondaryMessage" formControlName="secondaryMessage">
+                        <small class="form-text text-muted danger" *ngIf="!form.get('secondaryMessage').valid && (form.get('secondaryMessage').dirty || form.get('secondaryMessage').touched)">
+                          Campo Obrigatório
+                        </small>
+                      </fieldset>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Event end -->
+
+    <!-- Gallery start -->
+    <section class="basic-elements" *ngIf="event.id != null">
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12">
+
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title mb-0">Selecionar arquivos</h4>
+            </div>
+
+            <div class="card-body">
+              <div class="px-3">
+
+                <div class="form-body">
+
+                  <div class="input-group">
+
+                    <label class="display-inline-block custom-control custom-radio ml-1">
+                      <input type="radio" name="typeImage" value="logo" formControlName="typeImage" [(ngModel)]="typeImage" (change)="changeTypeImage()" class="custom-control-input">
+                      <span class="custom-control-indicator"></span>
+                      <span class="custom-control-description ml-0">Logo</span>
+                    </label>
+
+                    <label class="display-inline-block custom-control custom-radio ml-1">
+                      <input type="radio" name="typeImage" value="cover" formControlName="typeImage" [(ngModel)]="typeImage" (change)="changeTypeImage()" class="custom-control-input">
+                      <span class="custom-control-indicator"></span>
+                      <span class="custom-control-description ml-0">Fundo</span>
+                    </label>
+
+                  </div>
+
+                  <div class="row">
+
+                    <div class="col-xl-12 col-lg-12 col-md-12">
+                      <fieldset class="form-group">
+                        <label for="file">Enviar Arquivo</label>
+                        <label class="custom-file center-block d-block">
+                          <input type="file" id="file" class="custom-file-input" (change)="fileChangeListener($event)">
+                          <span class="custom-file-control"></span>
+                        </label>
+                      </fieldset>
+                    </div>
+                  </div>
+
+                  <div *ngIf="typeImage === 'logo'" id="event-card-logo" class="row">
+
+                    <div class="col-xl-8 col-lg-8 col-md-8">
+                      <img-cropper #cropper [image]="data" [settings]="cropperSettings" class=""></img-cropper>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                      <div class="result" *ngIf="data.image">
+                        <img [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div *ngIf="typeImage === 'cover'" id="event-card-cover" class="row">
+
+                    <div class="col-xl-12 col-lg-12 col-md-12">
+                      <img-cropper #cropper [image]="data" [settings]="cropperSettings" class=""></img-cropper>
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12">
+                      <div class="result" *ngIf="data.image">
+                        <img [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <br>
+                  <button type="button" (click)="addPhoto()" *ngIf="data.image" class="btn btn-success btn-raised">
+                    Enviar
+                  </button>
+
+                </div>
+                <!-- Cropper Ends -->
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Gallery end -->
+
+    <!--Carousel Starts-->
+    <section *ngIf="event.id != null" id="logo-cover">
+      <!--Basic Carousel Starts-->
+      <div class="row" matchHeight="card">
+
+        <div class="col-lg-6 col-xl-6">
+          <div class="card">
+
+            <div class="card-header">
+              <h4 class="card-title">Logo</h4>
+            </div>
+
+            <div *ngIf="logoUrl" class="card-body">
+              <div class="card-block">
+                <img class="img-fluid max-width: 100%; height: auto;" [src]="logoUrl ">
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-xl-6">
+          <div class="card">
+
+            <div class="card-header">
+              <h4 class="card-title">Fundo</h4>
+            </div>
+
+            <div *ngIf="coverUrl" class="card-body">
+              <div class="card-block">
+                <img class=" image-cover img-fluid max-width: 100%; height: auto;" [src]="coverUrl">
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!--Basic Carousel Ends-->
+
+      </div>
+    </section>
+
+    <!--User start-->
+    <section class="basic-textarea">
+      <div class="row">
+        <div class="col-xl-12 col-lg-6 col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title mb-0">Escolha os Parceiros</h4>
+            </div>
+            <div class="card-body">
+              <div class="card-block">
+
+                <div class="form-body">
+                  <div class="row">
+
+                    <div class="col-xl-6 col-lg-6 col-md-12 mb-1">
+                      <div class="form-group">
+
+                        <ng-template #rt let-r="result" let-t="term">
+                          <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
+                        </ng-template>
+
+                        <label for="typeahead-http">Busca parceiros:</label>
+                        <div class="input-group">
+                          <input id="typeahead-http" type="text" class="form-control" [class.is-invalid]="searchFailed" [(ngModel)]="companyCard" formControlName="company" prop="company" [ngbTypeahead]="search" [resultTemplate]="rt"
+                                 [inputFormatter]="formatterSearch" placeholder="Buscar parceiro"/>
+                          <div class="input-group-btn" id="button-addon-search">
+                            <button type="button" (click)="addCompany()" class="btn btn-raised btn-outline-success">
+                              Adicionar
+                            </button>
+                          </div>
+                        </div>
+                        <div *ngIf="searching">Buscando...</div>
+                        <div class="invalid-feedback" *ngIf="searchFailed">
+                          Desculpe, sugestões não puderam ser carregadas.
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+
+                      <ngx-datatable class="bootstrap fullscreen" [rows]="event.companies" [columns]="columns" [columnMode]="'force'"
+                                     [headerHeight]="50" [footerHeight]="70" [rowHeight]="'auto'" [scrollbarH]="true" [limit]="10" ontimeupdate="'force'" [reorderable]="reorderable">
+                        <i class="ft-edit-2 info font-medium-1 mr-2"></i>
+
+                        <h1>Parceiros</h1>
+
+                        <ngx-datatable-column [width]="200" name="Companhia" prop="name">
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column [width]="250" name="Descrição" prop="desc">
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column [width]="250" name="Local" prop="address">
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column [width]="100" name="Ações">
+
+                          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                            <a (click)="removeCompany(row.id)" class="danger" data-original-title="Remover" title="Remover">
+                              <i class="ft-trash font-medium-3"></i>
+                            </a>
+                          </ng-template>
+
+                        </ngx-datatable-column>
+
+                      </ngx-datatable>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--User End end-->
+
+    <!--Basic DataTable Starts-->
+    <section id="basic-datatable" class="mb-3">
+
+
+    </section>
+    <!--Basic DataTable Ends-->
+
+    <!-- Submit begin -->
+    <section class="file-browser">
+      <div class="form-actions">
+        <div class="text-right">
+          <button type="submit" class="btn btn-raised btn-primary">
+            Salvar
+            <i class="ft-thumbs-up position-right"></i></button>
+        </div>
+      </div>
+    </section>
+    <!-- Submit end -->
+  </form>

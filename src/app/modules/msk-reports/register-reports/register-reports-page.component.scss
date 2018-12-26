@@ -1,0 +1,13 @@
+.pointer {cursor: pointer;}
+
+.my-drop-zone {
+  border: dotted 3px lightgray;
+  background-color: #f5f7fa !important;
+}
+.nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+.another-file-over-class { border: dotted 3px green; }
+
+.switch-company{
+  margin-left: 2px;
+}
+

@@ -1,0 +1,50 @@
+<!--Basic DataTable Starts-->
+<section id="basic-datatable" class="mb-3">
+
+  <div class="row">
+    <div class="col-sm-12">
+
+      <input type='text' style='padding:8px;margin:15px auto;width:25%;' placeholder='Filtrar...' (keyup)='updateFilter($event)'/>
+
+      <ngx-datatable class="bootstrap" [rows]="rows" [columns]="columns" [columnMode]="'force'"
+                     [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [reorderable]="reorderable">
+        <i class="ft-edit-2 info font-medium-1 mr-2"></i>
+
+        <ngx-datatable-column name="Nome" prop="nameUser">
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Status" prop="status">
+          <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value">
+
+            <p *ngIf="row.status == 'OPEN'">
+              Pendente
+            </p>
+
+            <p *ngIf="row.status == 'PROCESSED'">
+              Processado
+            </p>
+
+          </ng-template>
+        </ngx-datatable-column>
+
+
+        <ngx-datatable-column name="Ações" >
+          <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+            {{column.name}}
+          </ng-template>
+
+          <ng-template let-column="column" ngx-datatable-header-template>
+            actions
+          </ng-template>
+
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <i class="pb-icon icon-edit" (click)="view(row)" class="pointer">Visualizar</i>
+          </ng-template>
+
+        </ngx-datatable-column>
+
+      </ngx-datatable>
+    </div>
+  </div>
+</section>
+<!--Basic DataTable Ends-->

@@ -1,0 +1,63 @@
+<!--Basic DataTable Starts-->
+<section id="basic-datatable" class="mb-3">
+
+  <div class="text-right">
+    <button type="button" (click)="newReports()" class="btn btn-raised btn-primary">Enviar Relatório<i class="ft-plus position-right"></i></button>
+  </div>
+
+    <div class="row">
+    <div class="col-sm-12">
+
+      <input type='text' style='padding:8px;margin:15px auto;width:25%;' placeholder='Filtrar...' (keyup)='updateFilter($event)'/>
+
+      <ngx-datatable class="bootstrap fullscreen" [rows]="rows" [columns]="columns" [columnMode]="'force'"
+                     [headerHeight]="50" [scrollbarH]="true" [footerHeight]="70" [rowHeight]="80" [limit]="10">
+        <i class="ft-edit-2 info font-medium-1 mr-2"></i>
+
+        <h1>Lista de Eventos</h1>
+
+        <ngx-datatable-column name="Data" maxlength="8" prop="creationDate">
+          <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value">
+            {{row.creationDate | dateFormat }}
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Nome do Arquivo" prop="name">
+        </ngx-datatable-column>
+        <ngx-datatable-column name="id da empresa" prop="idCompany">
+        </ngx-datatable-column>
+
+        <!--<ngx-datatable-column name="Status" >-->
+
+          <!--<ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value">-->
+
+            <!--<p *ngIf="row.status == 'BLOCKED'">-->
+              <!--Inativo-->
+            <!--</p>-->
+
+            <!--<p *ngIf="row.status == 'ACTIVE'">-->
+              <!--Ativo-->
+            <!--</p>-->
+
+          <!--</ng-template>-->
+        <!--</ngx-datatable-column>-->
+
+        <ngx-datatable-column>
+          <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+            {{column.name}}
+          </ng-template>
+
+          <ng-template let-column="column" ngx-datatable-header-template>
+            actions
+          </ng-template>
+
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <i class="pb-icon icon-edit" (click)="showMessages(row)" class="pointer">Excluir</i>
+          </ng-template>
+
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </div>
+  </div>
+</section>
+<!--Basic DataTable Ends-->

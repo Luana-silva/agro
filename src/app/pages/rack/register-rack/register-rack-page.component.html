@@ -1,0 +1,68 @@
+<form [formGroup]="form" (ngSubmit)="save()" novalidate>
+
+  <!-- RACK start -->
+    <section class="basic-textarea">
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title mb-0">RACK INFORMATION</h4>
+            </div>
+            <div class="card-body">
+              <div class="card-block">
+
+                <div class="form-body">
+                  <div class="row">
+
+                    <div class="col-xl-4 col-lg-6 col-md-12">
+                      <fieldset class="form-group">
+                        <label for="txtDesc">Description</label>
+                        <input type="text" class="form-control" id="txtDesc" [(ngModel)]="rack.desc" formControlName="desc">
+                      </fieldset>
+                    </div>
+                    <div class="col-xl-2 col-lg-6 col-md-12">
+                      <fieldset class="form-group">
+                        <label for="txtEmail">Validator</label>
+                        <input type="text" class="form-control" id="txtEmail" [(ngModel)]="rack.sysid" maxlength="1" formControlName="sysid">
+                      </fieldset>
+                    </div>
+
+
+
+                    <div class="col-xl-4 col-lg-6 col-md-12" *ngIf="rack.id == null">
+                      <label>Company</label>
+                        <select class="form-control" formControlName="company" prop="company" [(ngModel)]="rack.company" >
+                            <option *ngFor="let company of companyOptions" [ngValue]="company"> {{company.name}}</option>
+                          </select>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-6 col-md-12" *ngIf="rack.id != null">
+                      <label>Company xxx</label>
+                      <select class="form-control" formControlName="company" prop="company" [(ngModel)]="rack.company.id" >
+                        <option *ngFor="let company of companyOptions" [ngValue]="company.id"> {{company.name}}</option>
+                      </select>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  <!-- RACK End end -->
+
+  <!-- Submit begin -->
+  <section class="file-browser">
+    <div class="form-actions">
+      <div class="text-right">
+        <button type="submit" class="btn btn-raised btn-primary">Save <i class="ft-thumbs-up position-right"></i></button>
+      </div>
+    </div>
+  </section>
+  <!-- Submit end -->
+
+</form>

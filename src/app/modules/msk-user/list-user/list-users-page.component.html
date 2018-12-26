@@ -1,0 +1,38 @@
+<!--Basic DataTable Starts-->
+<section id="basic-datatable" class="mb-3">
+
+    <div class="row">
+    <div class="col-sm-12">
+      <ngx-datatable class="bootstrap" [rows]="rows" [columns]="columns" [columnMode]="'force'"
+                     [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [reorderable]="reorderable">
+        <i class="ft-edit-2 info font-medium-1 mr-2"></i>
+
+        <ngx-datatable-column name="Id" prop="id">
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Nome" prop="name">
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Ações" >
+          <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+            {{column.name}}
+          </ng-template>
+
+          <ng-template let-column="column" ngx-datatable-header-template>
+            actions
+          </ng-template>
+
+          <!--<ng-template let-row="row" let-value="value" ngx-datatable-cell-template>-->
+            <!--<i class="pb-icon icon-edit" (click)="detail(row)" class="pointer">Visualizar</i>-->
+          <!--</ng-template>-->
+
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <i class="pb-icon icon-edit" (click)="view(row)" class="pointer">Visualizar</i>
+          </ng-template>
+
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </div>
+  </div>
+</section>
+<!--Basic DataTable Ends-->

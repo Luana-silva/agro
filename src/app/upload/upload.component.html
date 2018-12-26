@@ -1,0 +1,95 @@
+<section id="app-upload-file">
+
+  <div id="my-dropzone">
+
+    <div id="actions">
+
+      <div>
+        <form action="http://localhost:8080/upload_dropzone.php" method="post" enctype="multipart/form-data">
+
+          <div class="dropzone fileinput-button">
+            <div class="dz-message text-center" data-dz-message>
+              <div class="icon">
+                <i class="flaticon-file"></i>
+              </div>
+              <h4 class="message"> Arraste e solte ou clique para adicionar seus arquivos</h4>
+              <div class="note">(Selecione um ou vários arquivos)</div>
+
+              <div class="fallback">
+                <input name="file" type="file" multiple/>
+              </div>
+            </div>
+
+          </div>
+
+        </form>
+      </div>
+
+      <div>
+
+        <button type="submit" id="upload-all-dropzone" class="btn btn-raised btn-primary start">
+          <i class="glyphicon glyphicon-upload"></i> <span>Enviar todos</span>
+        </button>
+
+        <button type="reset" id="clear-all-dropzone" class="btn btn-raised btn-warning cancel">
+          <i class="glyphicon glyphicon-ban-circle"></i> <span>Remover todos</span>
+        </button>
+
+      </div>
+
+      <div class="col-lg-12">
+        <!-- The global file processing state -->
+        <div class="fileupload-process">
+          <div id="total-progress" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="files row" id="previews">
+
+      <div id="template" class="file-row col-sm-3 col-md-3">
+        <div class="card mb-3 box-shadow">
+
+          <!-- This is used as the file preview template -->
+
+          <div class="preview"><img class="card-img-top" data-dz-thumbnail/><input type="hidden" name="data" value="{'width':200.0}" /></div>
+
+          <div class="card-body">
+
+            <div class="card-title">
+              <p class="name" data-dz-name></p>
+              <strong class="error text-danger" data-dz-errormessage></strong>
+            </div>
+
+            <div>
+              <p class="size" data-dz-size></p>
+              <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <div class="progress-bar progress-bar-striped bg-success" style="width:0%;" data-dz-uploadprogress></div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <button class="btn btn-raised btn-primary actionunit start">
+              <i class="glyphicon glyphicon-upload"></i> <span>Enviar</span>
+            </button>
+
+            <button data-dz-remove class="btn btn-raised btn-warning cancel">
+              <i class="glyphicon glyphicon-ban-circle"></i> <span>Cancelar</span>
+            </button>
+
+            <button data-dz-remove class="btn btn-raised btn-danger delete">
+              <i class="glyphicon glyphicon-trash"></i> <span>Remover</span>
+            </button>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
