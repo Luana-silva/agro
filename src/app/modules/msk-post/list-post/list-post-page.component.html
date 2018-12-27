@@ -10,8 +10,23 @@
 
       <!--<input type='text' style='padding:8px;margin:15px auto;width:25%;' placeholder='Filtrar...' (keyup)='updateFilter($event)'/>-->
 
-      <ngx-datatable class="bootstrap fullscreen" [rows]="rows" [columns]="columns" [columnMode]="'force'"
-                     [headerHeight]="50" [footerHeight]="70" [scrollbarH]="scrollBarHorizontal" [rowHeight]="'auto'" [reorderable]="reorderable" [limit]="30">
+      <ngx-datatable
+      class="bootstrap fullscreen"
+      [rows]="rowsPage"
+      [columns]="columns"
+      [columnMode]="'force'"
+      [headerHeight]="50"
+      [footerHeight]="70"
+      [scrollbarH]="scrollBarHorizontal"
+      [rowHeight]="'auto'"
+      [reorderable]="reorderable"
+      [externalPaging]="true"
+      [count]="page.totalElements"
+      [offset]="page.pageNumber - 1"
+      [limit]="page.size"
+      (page)='setPage($event)'
+      >
+      <!-- o -1 no offset é devido sua api começar em 1 e não em 0 -->
         <i class="ft-edit-2 info font-medium-1 mr-2"></i>
 
         <h1>Lista de Eventos</h1>
