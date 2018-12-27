@@ -45,9 +45,60 @@ export class ListPostPageComponent implements OnInit {
 
   // DataTable Content Titles
   columns = [
-    {prop: 'nome', name: 'Nome'},
-    {prop: 'email', name: 'Email'},
-    {prop: 'Post', name: 'Post'}
+    {
+      prop: 'creationDate',
+      name: 'Data',
+      width: 100,
+      sort: true,
+      isDate: true,
+      options: false
+    },
+    {
+      prop: 'infoUrl.siteName',
+      name: 'Portal',
+      width: 150,
+      sort: true,
+      isDate: false,
+      options: false
+    },
+    {
+      prop: 'infoUrl.title',
+      name: 'Título',
+      width: 250,
+      sort: true,
+      isDate: false,
+      options: false
+    },
+    {
+      prop: 'status',
+      name: 'Status',
+      width: 250,
+      sort: true,
+      isDate: false,
+      options: false,
+      arrayTranslate: [
+        {
+          to: 'BLOCKED',
+          from: 'Reprovado'
+        },
+        {
+          to: 'PENDING',
+          from: 'Pendente'
+        },
+        {
+          to: 'ACTIVE',
+          from: 'Aprovado'
+        },
+      ]
+    },
+    {
+      prop: 'id',
+      name: 'AÇÃO',
+      width: 100,
+      sort: false,
+      isDate: false,
+      options: true
+    }
   ];
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
@@ -146,6 +197,18 @@ export class ListPostPageComponent implements OnInit {
     } else {
       this.selectTable();
     }
+  }
+
+  executeTranslate(column, value) {
+    let result = '';
+    column.arrayTranslate.map(row => {
+      if (row.to === value) {
+        result = row.from;
+        return;
+      }
+    })
+
+    return result;
   }
 
 }

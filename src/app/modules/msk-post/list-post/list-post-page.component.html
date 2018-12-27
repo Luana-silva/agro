@@ -27,6 +27,27 @@
       (page)='setPage($event)'
       >
       <!-- o -1 no offset é devido sua api começar em 1 e não em 0 -->
+
+      <ngx-datatable-column *ngFor="let column of columns; let indexColumn = index" name="{{column.name}}"
+      prop="{{column.prop}}" [width]="column.width" [sortable]="column.sort">
+        <ng-template  let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+
+          <span *ngIf="!column.isDate && !column.options">
+            {{column.arrayTranslate ? executeTranslate(column, row[ column.prop ]) : column.prop.indexOf('.') > -1 ? row[column.prop.split('.')[0]][column.prop.split('.')[1]] : row[ column.prop ]}}
+          </span>
+
+          <span *ngIf="column.isDate && !column.options">
+            {{row[column.prop] | dateFormat}}
+          </span>
+
+          <div *ngIf="column.options">
+            <i class="pb-icon icon-edit" (click)="view(row)" class="pointer">Vizualizar</i>
+          </div>
+
+        </ng-template>
+      </ngx-datatable-column>
+
+<!--
         <i class="ft-edit-2 info font-medium-1 mr-2"></i>
 
         <h1>Lista de Eventos</h1>
@@ -74,7 +95,7 @@
             <i class="pb-icon icon-edit" (click)="view(row)" class="pointer">Vizualizar</i>
           </ng-template>
 
-        </ngx-datatable-column>
+        </ngx-datatable-column> -->
       </ngx-datatable>
     </div>
   </div>
